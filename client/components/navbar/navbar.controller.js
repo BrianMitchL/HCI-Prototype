@@ -5,6 +5,12 @@ angular.module('hciPrototypeApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    }, {
+      'title': 'Cards',
+      'link': '/cards'
+    }, {
+      'title': 'Add Cards',
+      'link': '/add'
     }];
 
     $scope.isCollapsed = true;

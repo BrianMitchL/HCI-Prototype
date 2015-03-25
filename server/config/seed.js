@@ -6,6 +6,7 @@
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
+var Card = require('../api/card/card.model');
 
 
 Thing.find({}).remove(function() {
@@ -27,5 +28,25 @@ Thing.find({}).remove(function() {
   },{
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  });
+});
+
+Card.find({}).remove(function() {
+  Card.create({
+    name : 'Sauce Boss',
+    description : 'Lathers opponents in delicious, distracting sauces.',
+    type : 'cook'
+  }, {
+    name : 'Crucial',
+    description : 'Throws SSDs at opponents.',
+    type : 'projectile'
+  }, {
+    name : 'Speaker Dude',
+    description : 'Drops the bass so hard he puts opponents into an uncontrollable dropped bass state.',
+    type : 'sound'
+  }, {
+    name : 'Swirly',
+    description : 'Holds the opponent\'s head in a toilet while flushing it.',
+    type : 'water'
   });
 });
