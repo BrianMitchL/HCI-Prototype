@@ -48,5 +48,42 @@ Card.find({}).remove(function() {
     name : 'Swirly',
     description : 'Holds the opponent\'s head in a toilet while flushing it.',
     type : 'water'
+  }, {
+    name : 'Lighting',
+    description : 'Struck by lightning, -5 HP.',
+    type : 'electricity'
+  }, {
+    name : 'Flood',
+    description : 'Major flood, -3 HP.',
+    type : 'water'
+  }, {
+    name : 'Surprise Party',
+    description : 'Your friends throw a surprise party for you! +12 mana.',
+    type : 'party',
+    deck : 'Fun Times'
+  }, {
+    name : 'Mosh Pit',
+    description : 'You have a blast in a mosh pit, +3 mana.',
+    type : 'party',
+    deck : 'Fun Times'
+  }, {name : 'Textbook',
+    description : 'You read an entire textbook, wow. +6 HP',
+    type : 'knowledge'
+  }, {
+    name : 'Bling Bling',
+    description : 'You found $20 on the ground!',
+    type : 'money'
+  }, {
+    name : 'Dumbell',
+    description : 'You\'re either stronger or your enemies have bruises.',
+    type : 'strength'
+  }, {
+    name : 'Dessert',
+    description : 'Your mother makes you a delicious cherry pie, yum. +50 happiness.',
+    type : 'food'
+  }, {
+    name : 'JavaScript',
+    description : 'You lose track of your types, the world is too dynamic. -4 HP',
+    type : 'knowledge'
   });
 });

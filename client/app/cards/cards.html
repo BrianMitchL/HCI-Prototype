@@ -4,41 +4,47 @@
   <div class="container">
     <h1>Cards</h1>
     <p class="lead">A list of all cards entered.</p>
+    <button ng-click="reloadCards()" class="btn btn-warning">*DEBUG* Reload from MongoDB</button>
   </div>
 </header>
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Cards:</h1>
+      <h1 class="page-header">Library:</h1>
+      <button ng-click="libraryParams.sorting({name: 'asc'})" class="btn btn-default pull-right">Clear sorting</button>
+      <button ng-click="libraryParams.filter({})" class="btn btn-default pull-right">Clear filter</button>
+      <p><strong>Sorting:</strong> {{libraryParams.sorting()|json}}</p>
+      <p><strong>Filter:</strong> {{libraryParams.filter()|json}}</p>
 
-      <button ng-click="reloadCards()" class="btn btn-default">Reload</button>
-      <button ng-click="tableParams.sorting({name: 'asc'})" class="btn btn-default pull-right">Clear sorting</button>
-      <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}</p>
-
-        <table ng-table="tableParams" show-filter="true" class="table">
-          <tbody>
-            <tr ng-repeat="card in $data">
-              <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'">
-                <input ng-if="card.$edit" class="form-control" type="text" ng-model="card.name">
-                <span ng-if="!card.$edit">{{card.name}}</span>
-              </td>
-              <td data-title="'Type'" filter="{ 'type': 'text' }" sortable="'type'">
-                <input ng-if="card.$edit" class="form-control" type="text" ng-model="card.type">
-                <span ng-if="!card.$edit">{{card.type}}</span>
-              </td>
-              <td data-title="'Description'" filter="{ 'description': 'text' }" sortable="'description'">
-                <input ng-if="card.$edit" class="form-control" type="text" ng-model="card.description">
-                <span ng-if="!card.$edit">{{card.description}}</span>
-              </td>
-              <td data-title="'Actions'" width="200">
-                <button ng-if="!card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = true">Edit</button>
-                <button ng-if="card.$edit" class="btn btn-primary btn-xs" ng-click="card.$edit = false; updateCard(card)">Save</button>
-                <button ng-if="card.$edit" class="btn btn-danger btn-xs" ng-click="card.$edit = false; deleteCard(card)">Delete</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <table ng-table="libraryParams" show-filter="true" class="table">
+        <tbody>
+          <tr ng-repeat="card in $data">
+            <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'">
+              <input ng-if="card.$edit" class="form-control" type="text" ng-model="card.name">
+              <span ng-if="!card.$edit">{{card.name}}</span>
+            </td>
+            <td data-title="'Type'" filter="{ 'type': 'text' }" sortable="'type'">
+              <input ng-if="card.$edit" class="form-control" type="text" ng-model="card.type">
+              <span ng-if="!card.$edit">{{card.type}}</span>
+            </td>
+            <td data-title="'Deck'" filter="{ 'deck': 'text' }" sortable="'deck'">
+              <input ng-if="card.$edit" class="form-control" type="text" ng-model="card.deck">
+              <span ng-if="!card.$edit">{{card.deck}}</span>
+            </td>
+            <td data-title="'Description'" filter="{ 'description': 'text' }" sortable="'description'">
+              <textarea ng-if="card.$edit" class="form-control" type="text" ng-model="card.description"></textarea>
+              <p ng-if="!card.$edit">{{card.description}}</p>
+            </td>
+            <td data-title="'Actions'" width="120">
+              <button ng-if="!card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = true">Edit</button>
+              <button ng-if="card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = false">Cancel</button>
+              <button ng-if="card.$edit" class="btn btn-primary btn-xs" ng-click="card.$edit = false; updateCard(card)">Save</button>
+              <button ng-if="card.$edit" class="btn btn-danger btn-xs" ng-click="card.$edit = false; deleteCard(card)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       </div>
     </div>
   </div>

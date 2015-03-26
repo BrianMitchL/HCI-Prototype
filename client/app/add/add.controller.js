@@ -15,5 +15,5 @@ angular.module('hciPrototypeApp')
 
     $scope.reset = function() {
       $scope.card = {};
-    }
+    };
   });

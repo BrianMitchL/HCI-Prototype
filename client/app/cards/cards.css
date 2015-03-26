@@ -1,0 +1,7 @@
+textarea {
+  resize: vertical;
+}
+
+td > .btn-xs {
+  margin: 3px 1px;
+}

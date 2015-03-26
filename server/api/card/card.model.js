@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 var CardSchema = new Schema({
   name: String,
   description: String,
-  type: String
+  type: String,
+  deck: String
 });
 
 module.exports = mongoose.model('Card', CardSchema);
