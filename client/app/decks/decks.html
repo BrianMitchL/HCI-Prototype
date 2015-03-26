@@ -1,0 +1,40 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Decks</h1>
+    <p class="lead">All of your decks.</p>
+    <button ng-click="reloadDecks()" class="btn btn-warning">*DEBUG* Reload from MongoDB</button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Decks:</h1>
+
+      <button ng-click="deckParams.sorting({name: 'asc'})" class="btn btn-default pull-right">Clear sorting</button>
+      <button ng-click="deckParams.filter({})" class="btn btn-default pull-right">Clear filter</button>
+      <p><strong>Sorting:</strong> {{deckParams.sorting()|json}}</p>
+      <p><strong>Filter:</strong> {{deckParams.filter()|json}}</p>
+
+      <table ng-table="deckParams" show-filter="true" class="table">
+        <tbody>
+        <tr ng-repeat="deck in $data">
+          <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'">
+            {{deck.name}}
+          </td>
+          <td data-title="'Info'" filter="{ 'info': 'text' }" sortable="'info'">
+            {{deck.info}}
+          </td>
+          <td data-title="'Actions'" width="60">
+            <button class="btn btn-danger btn-xs" ng-click="deleteDeck(deck)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer ng-include="'components/footer/footer.html'"></footer>

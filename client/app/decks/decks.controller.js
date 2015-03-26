@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('hciPrototypeApp')
-  .controller('CardsCtrl', function ($scope, $http, $filter, ngTableParams) {
+  .controller('DecksCtrl', function ($scope, $http, $filter, ngTableParams) {
     var data = [];
 
-    $http.get('/api/cards').success(function(cardList) {
-      data = cardList;
-      $scope.libraryParams = new ngTableParams({
+    $http.get('/api/decks').success(function(deckList) {
+      data = deckList;
+      $scope.deckParams = new ngTableParams({
         page: 1,            // show first page
         count: 10,          // count per page
         //Can set initial filter, but drastically slows the rendering of the table
@@ -31,38 +31,22 @@ angular.module('hciPrototypeApp')
       console.log(status + ": " + data);
     });
 
-    $scope.deleteCard = function(card) {
-      $http.delete('/api/cards/' + card._id).success(function(){
-        getCards();
+    $scope.deleteDeck = function(deck) {
+      $http.delete('/api/decks/' + deck._id).success(function(){
+        getDecks();
       });
     };
 
-    function getCards() {
-      $http.get('/api/cards').success(function(cardList) {
-        data = cardList;
-        $scope.libraryParams.reload();
+    function getDecks() {
+      $http.get('/api/decks').success(function(deckList) {
+        data = deckList;
+        $scope.deckParams.reload();
       }).error(function(data, status) {
         console.log(status + ": " + data);
       });
     }
 
-    $scope.reloadCards = function() {
-      getCards();
+    $scope.reloadDecks = function() {
+      getDecks();
     };
-
-    $scope.set_color = function (color) {
-      if (color == "red") {
-        return {color: "#F9A084"}
-      } else if (color == "green") {
-        return {color: "#90CDA4"}
-      } else if (color == "black") {
-        return {color: "#C6BBB9"}
-      } else if (color == "blue") {
-        return {color: "#A1DCF9"}
-      } else if (color == "white") {
-        return {color: "#FFFCD1"}
-      } else {
-        return {color: "#FF00F9"}
-      }
-    }
   });
