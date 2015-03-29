@@ -11,25 +11,39 @@
   <div class="row">
     <div class="col-lg-12">
       <h3>Add a New Card:</h3>
-      <form>
+      <form name="addCardForm" ng-submit="addCard()">
         <div class="form-group">
-          <label for="cardName">Card Name</label>
-          <input class="form-control" id="cardName" type="text" ng-model="card.name" size="30" placeholder="Card Name">
+          <label for="name">Name</label>
+          <input class="form-control" id="name" type="text" ng-model="card.name" placeholder="Name">
         </div>
         <div class="form-group">
-          <label for="cardDescription">Card Description</label>
-          <input class="form-control" id="cardDescription" type="text" ng-model="card.description" placeholder="Card Description">
+          <label for="description">Description</label>
+          <input class="form-control" id="description" type="text" ng-model="card.description" placeholder="Description">
         </div>
         <div class="form-group">
-          <label for="cardType">Card Type</label>
-          <input class="form-control" id="cardType" type="text" ng-model="card.type" placeholder="Card Type">
+          <label for="type">Type</label>
+          <input class="form-control" id="type" type="text" ng-model="card.type" placeholder="Type">
         </div>
         <div class="form-group">
-          <label for="cardDeck">Card Deck (Optional)</label>
-          <input class="form-control" id="cardDeck" type="text" ng-model="card.deck" placeholder="Card Deck">
+          <label for="subType">Sub Type</label>
+          <input class="form-control" id="subType" type="text" ng-model="card.subType" placeholder="Sub Type">
         </div>
-        <input type="button" class="btn btn-danger" ng-click="reset()" value="Reset"/>
-        <input type="submit" class="btn btn-primary" ng-click="addCard()" value="Add"/>
+        <div class="form-group">
+          <label for="flavor">Flavor Text</label>
+          <input class="form-control" id="flavor" type="text" ng-model="card.flavor" placeholder="Flavor">
+        </div>
+        <div class="form-group">
+          <label>Color</label><br />
+          <label ng-repeat="color in ['blue', 'red', 'black', 'green', 'white']">
+            <input type="checkbox" ng-checked="card.color.indexOf(color) > -1" ng-click="toggleSelection(color)">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-1x" ng-style="set_color(color)"></i>
+              <i class="fa fa-circle-thin fa-stack-1x"></i>
+            </span>
+          </label>
+        </div>
+        <button type="button" class="btn btn-danger" ng-click="reset()">Reset</button>
+        <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>
   </div>
