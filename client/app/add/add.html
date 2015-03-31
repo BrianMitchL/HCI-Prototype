@@ -11,36 +11,168 @@
   <div class="row">
     <div class="col-lg-12">
       <h3>Add a New Card:</h3>
-      <form name="addCardForm" ng-submit="addCard()">
-        <div class="form-group">
+      <form name="addCardForm" ng-submit="addCard(addCardForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.name.$invalid && !addCardForm.name.$pristine }">
           <label for="name">Name</label>
-          <input class="form-control" id="name" type="text" ng-model="card.name" placeholder="Name">
+          <input class="form-control" id="name" type="text" name="name" ng-model="card.name" placeholder="Name" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.name.$dirty && addCardForm.name.$invalid">
+            <small class="error" ng-show="addCardForm.name.$error.required">A name is required.</small>
+            <small class="error" ng-show="addCardForm.name.$error.minlength">The name is required to be at least 1 character</small>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.description.$invalid && !addCardForm.description.$pristine }">
           <label for="description">Description</label>
-          <input class="form-control" id="description" type="text" ng-model="card.description" placeholder="Description">
+          <input class="form-control" id="description" type="text" name="description" ng-model="card.description" placeholder="Description" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.description.$dirty && addCardForm.description.$invalid">
+            <small class="error" ng-show="addCardForm.description.$error.required">A description is required.</small>
+            <small class="error" ng-show="addCardForm.description.$error.minlength">The description is required to be at least 1 character</small>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.type.$invalid && !addCardForm.type.$pristine }">
           <label for="type">Type</label>
-          <input class="form-control" id="type" type="text" ng-model="card.type" placeholder="Type">
+          <input class="form-control" id="type" type="text" name="type" ng-model="card.type" placeholder="Type" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.type.$dirty && addCardForm.type.$invalid">
+            <small class="error" ng-show="addCardForm.type.$error.required">A type is required.</small>
+            <small class="error" ng-show="addCardForm.type.$error.minlength">The type is required to be at least 1 character</small>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="subType">Sub Type</label>
-          <input class="form-control" id="subType" type="text" ng-model="card.subType" placeholder="Sub Type">
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.subType.$invalid && !addCardForm.subType.$pristine }">
+          <label for="subType">Sub-Type</label>
+          <input class="form-control" id="subType" type="text" name="subType" ng-model="card.subType" placeholder="Sub Type" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.subType.$dirty && addCardForm.subType.$invalid">
+            <small class="error" ng-show="addCardForm.subType.$error.required">A sub-type is required.</small>
+            <small class="error" ng-show="addCardForm.subType.$error.minlength">The sub-type is required to be at least 1 character</small>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="flavor">Flavor Text</label>
-          <input class="form-control" id="flavor" type="text" ng-model="card.flavor" placeholder="Flavor">
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.deck.$invalid && !addCardForm.deck.$pristine }">
+          <label for="deck">Deck</label>
+          <input class="form-control" id="deck" type="text" name="deck" ng-model="card.deck" placeholder="Deck" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.deck.$dirty && addCardForm.deck.$invalid">
+            <small class="error" ng-show="addCardForm.deck.$error.required">A deck is required.</small>
+            <small class="error" ng-show="addCardForm.deck.$error.minlength">The deck is required to be at least 1 character</small>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Color</label><br />
-          <label ng-repeat="color in ['blue', 'red', 'black', 'green', 'white']">
-            <input type="checkbox" ng-checked="card.color.indexOf(color) > -1" ng-click="toggleSelection(color)">
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.color.$error.required && submitted}">
+          <label class="checkbox-inline">
+            <input type="checkbox" name="color" ng-model="card.color.blue" ng-required="!card.color">
             <span class="fa-stack">
-              <i class="fa fa-circle fa-stack-1x" ng-style="set_color(color)"></i>
-              <i class="fa fa-circle-thin fa-stack-1x"></i>
+              <i class="fa fa-circle fa-stack-2x" style="color:#A1DCF9"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
             </span>
           </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="color" ng-model="card.color.red" ng-required="!card.color">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#F9A084"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="color" ng-model="card.color.black" ng-required="!card.color">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#C6BBB9"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="color" ng-model="card.color.green" ng-required="!card.color">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#90CDA4"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="color" ng-model="card.color.white" ng-required="!card.color">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#FFFCD1"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.colorID.$error.required && submitted}">
+          <label class="checkbox-inline">
+            <input type="checkbox" name="colorID" ng-model="card.colorID.blue" ng-required="!card.colorID">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#A1DCF9"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="colorID" ng-model="card.colorID.red" ng-required="!card.colorID">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#F9A084"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="colorID" ng-model="card.colorID.black" ng-required="!card.colorID">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#C6BBB9"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="colorID" ng-model="card.colorID.green" ng-required="!card.colorID">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#90CDA4"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="colorID" ng-model="card.colorID.white" ng-required="!card.colorID">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x" style="color:#FFFCD1"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+            </span>
+          </label>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.rules.$invalid && !addCardForm.rules.$pristine }">
+          <label for="rules">Rules</label>
+          <textarea class="form-control" id="rules" type="text" name="rules" ng-model="card.rules" placeholder="Rules" ng-minlength="1" required></textarea>
+          <div class="error" ng-show="addCardForm.rules.$dirty && addCardForm.rules.$invalid">
+            <small class="error" ng-show="addCardForm.rules.$error.required">A rule(s) is required.</small>
+            <small class="error" ng-show="addCardForm.rules.$error.minlength">The rules are required to be at least 1 character</small>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.flavor.$invalid && !addCardForm.flavor.$pristine }">
+          <label for="flavor">Flavor</label>
+          <input class="form-control" id="flavor" type="text" name="flavor" ng-model="card.flavor" placeholder="Flavor" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.flavor.$dirty && addCardForm.flavor.$invalid">
+            <small class="error" ng-show="addCardForm.flavor.$error.required">A flavor is required.</small>
+            <small class="error" ng-show="addCardForm.flavor.$error.minlength">The flavor is required to be at least 1 character</small>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.power.$invalid && !addCardForm.power.$pristine }">
+          <label for="power">Power</label>
+          <input class="form-control" id="power" type="number" name="power" ng-model="card.power" placeholder="Power" min="0" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.power.$dirty && addCardForm.power.$invalid">
+            <small class="error" ng-show="addCardForm.power.$invalid && !addCardForm.power.$error.required">Enter a number equal to or larger than 0.</small>
+            <small class="error" ng-show="addCardForm.power.$error.required">A power is required.</small>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.toughness.$invalid && !addCardForm.toughness.$pristine }">
+          <label for="toughness">Toughness</label>
+          <input class="form-control" id="toughness" type="number" name="toughness" ng-model="card.toughness" placeholder="Toughness" min="0" required>
+          <div class="error" ng-show="addCardForm.toughness.$dirty && addCardForm.toughness.$invalid">
+            <small class="error" ng-show="addCardForm.toughness.$invalid && !addCardForm.toughness.$error.required">Enter a number equal to or larger than 0.</small>
+            <small class="error" ng-show="addCardForm.toughness.$error.required">A toughness is required.</small>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.rarity.$invalid && !addCardForm.rarity.$pristine }">
+          <label for="rarity">Rarity</label>
+          <input class="form-control" id="rarity" type="text" name="rarity" ng-model="card.rarity" placeholder="Rarity" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.rarity.$dirty && addCardForm.rarity.$invalid">
+            <small class="error" ng-show="addCardForm.rarity.$error.required">A rarity is required.</small>
+            <small class="error" ng-show="addCardForm.rarity.$error.minlength">The rarity is required to be at least 1 character</small>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.name.$invalid && !addCardForm.name.$pristine }">
+          <label for="blockSet">Block Set</label>
+          <input class="form-control" id="blockSet" type="text" name="blockSet" ng-model="card.blockSet" placeholder="Block Set" ng-minlength="1" required>
+          <div class="error" ng-show="addCardForm.blockSet.$dirty && addCardForm.blockSet.$invalid">
+            <small class="error" ng-show="addCardForm.blockSet.$error.required">A block set is required.</small>
+            <small class="error" ng-show="addCardForm.blockSet.$error.minlength">The block set is required to be at least 1 character</small>
+          </div>
         </div>
         <button type="button" class="btn btn-danger" ng-click="reset()">Reset</button>
         <button type="submit" class="btn btn-primary">Add</button>
@@ -48,5 +180,6 @@
     </div>
   </div>
 </div>
+
 
 <footer ng-include="'components/footer/footer.html'"></footer>

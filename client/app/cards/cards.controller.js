@@ -49,20 +49,4 @@ angular.module('hciPrototypeApp')
     $scope.reloadCards = function() {
       getCards();
     };
-
-    $scope.set_color = function (color) {
-      if (color == "red") {
-        return {color: "#F9A084"}
-      } else if (color == "green") {
-        return {color: "#90CDA4"}
-      } else if (color == "black") {
-        return {color: "#C6BBB9"}
-      } else if (color == "blue") {
-        return {color: "#A1DCF9"}
-      } else if (color == "white") {
-        return {color: "#FFFCD1"}
-      } else {
-        return {color: "#FF00F9"}
-      }
-    }
   });

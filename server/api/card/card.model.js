@@ -9,9 +9,21 @@ var CardSchema = new Schema({
   type: String,
   subType: String,
   deck: String,
-  color: [],
-  colorID: [],
-  rulesText: [],
+  color: {
+    blue: Boolean,
+    red: Boolean,
+    black: Boolean,
+    green: Boolean,
+    white: Boolean
+  },
+  colorID: {
+    blue: Boolean,
+    red: Boolean,
+    black: Boolean,
+    green: Boolean,
+    white: Boolean
+  },
+  rules: String,
   flavor: String,
   power: Number,
   toughness: Number,

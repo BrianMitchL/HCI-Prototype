@@ -23,28 +23,87 @@
             <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'">
               {{card.name}}
             </td>
+            <td data-title="'Description'" filter="{ 'description': 'text' }" sortable="'description'">
+              {{card.description}}
+            </td>
             <td data-title="'Type'" filter="{ 'type': 'text' }" sortable="'type'">
               {{card.type}}
             </td>
-            <td data-title="'Color'" sortable="'type'">
-              <span ng-repeat="color in card.color" class="fa-stack">
-                <i class="fa fa-circle fa-stack-1x" ng-style="set_color(color)"></i>
-                <i class="fa fa-circle-thin fa-stack-1x"></i>
-              </span>
+            <td data-title="'Sub Type'" filter="{ 'subType': 'text' }" sortable="'subType'">
+              {{card.subType}}
             </td>
             <td data-title="'Deck'" filter="{ 'deck': 'text' }" sortable="'deck'">
               {{card.deck}}
             </td>
-            <td data-title="'Description'" filter="{ 'description': 'text' }" sortable="'description'">
-              {{card.description}}
+            <td data-title="'Color'" width="60">
+              <span ng-show="card.color.blue" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#A1DCF9"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.color.red" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#F9A084"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.color.black" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#C6BBB9"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.color.green" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#90CDA4"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.color.white" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#FFFCD1"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
             </td>
+            <td data-title="'Color ID'" width="60">
+              <span ng-show="card.colorID.blue" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#A1DCF9"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.colorID.red" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#F9A084"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.colorID.black" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#C6BBB9"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.colorID.green" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#90CDA4"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.colorID.white" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#FFFCD1"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+            </td>
+            <td data-title="'Rules'" filter="{ 'rules': 'text' }" sortable="'rules'">
+              {{card.rules}}
+            </td>
+            <td data-title="'Flavor'" filter="{ 'flavor': 'text' }" sortable="'flavor'">
+              {{card.flavor}}
+            </td>
+            <td data-title="'Power'" filter="{ 'power': 'text' }" sortable="'power'">
+              {{card.power}}
+            </td>
+            <td data-title="'Toughness'" filter="{ 'toughness': 'text' }" sortable="'toughness'">
+              {{card.toughness}}
+            </td>
+            <td data-title="'Rarity'" filter="{ 'rarity': 'text' }" sortable="'rarity'">
+              {{card.rarity}}
+            </td>
+            <td data-title="'Block Set'" filter="{ 'blockSet': 'text' }" sortable="'blockSet'">
+              {{card.blockSet}}
+            </td>
+
             <td data-title="'Actions'" width="60">
               <button class="btn btn-danger btn-xs" ng-click="deleteCard(card)">Delete</button>
             </td>
           </tr>
         </tbody>
       </table>
-      </div>
     </div>
   </div>
 </div>
