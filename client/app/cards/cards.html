@@ -17,9 +17,9 @@
       <p><strong>Sorting:</strong> {{libraryParams.sorting()|json}}</p>
       <p><strong>Filter:</strong> {{libraryParams.filter()|json}}</p>
 
-      <table ng-table="libraryParams" show-filter="true" class="table">
-        <tbody>
-          <tr ng-repeat="card in $data">
+      <table ng-table="libraryParams" show-filter="true" class="table table-bordered ng-table-rowselected">
+        <tbody ng-repeat="card in $data">
+          <tr class="hovertr" ng-click="card.$selected = !card.$selected" ng-class="{'active': card.$selected}">
             <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'">
               {{card.name}}
             </td>
@@ -28,9 +28,6 @@
             </td>
             <td data-title="'Type'" filter="{ 'type': 'text' }" sortable="'type'">
               {{card.type}}
-            </td>
-            <td data-title="'Sub Type'" filter="{ 'subType': 'text' }" sortable="'subType'">
-              {{card.subType}}
             </td>
             <td data-title="'Deck'" filter="{ 'deck': 'text' }" sortable="'deck'">
               {{card.deck}}
@@ -79,27 +76,36 @@
                 <i class="fa fa-circle-thin fa-stack-2x"></i>
               </span>
             </td>
-            <td data-title="'Rules'" filter="{ 'rules': 'text' }" sortable="'rules'">
-              {{card.rules}}
-            </td>
-            <td data-title="'Flavor'" filter="{ 'flavor': 'text' }" sortable="'flavor'">
-              {{card.flavor}}
-            </td>
-            <td data-title="'Power'" filter="{ 'power': 'text' }" sortable="'power'">
-              {{card.power}}
-            </td>
-            <td data-title="'Toughness'" filter="{ 'toughness': 'text' }" sortable="'toughness'">
-              {{card.toughness}}
-            </td>
-            <td data-title="'Rarity'" filter="{ 'rarity': 'text' }" sortable="'rarity'">
-              {{card.rarity}}
-            </td>
-            <td data-title="'Block Set'" filter="{ 'blockSet': 'text' }" sortable="'blockSet'">
-              {{card.blockSet}}
-            </td>
-
             <td data-title="'Actions'" width="60">
               <button class="btn btn-danger btn-xs" ng-click="deleteCard(card)">Delete</button>
+            </td>
+          </tr>
+          <tr ng-show="card.$selected" ng-class="{'active': card.$selected};" class="nopadding">
+            <td colspan="7" class="nopadding">
+              <table class="table table-bordered noborder nopadding">
+                <thead>
+                  <tr ng-click="card.$selected = !card.$selected" ng-class="{'active': card.$selected}">
+                    <th>Sub Type</th>
+                    <th>Rules</th>
+                    <th>Flavor</th>
+                    <th>Power</th>
+                    <th>Toughness</th>
+                    <th>Rarity</th>
+                    <th>Block Set</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-click="card.$selected = !card.$selected" ng-class="{'active': card.$selected}">
+                    <td>{{card.subType}}</td>
+                    <td>{{card.rules}}</td>
+                    <td>{{card.flavor}}</td>
+                    <td>{{card.power}}</td>
+                    <td>{{card.toughness}}</td>
+                    <td>{{card.rarity}}</td>
+                    <td>{{card.blockSet}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </td>
           </tr>
         </tbody>

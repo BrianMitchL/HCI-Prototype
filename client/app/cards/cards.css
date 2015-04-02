@@ -1,3 +1,47 @@
 td > .btn-xs {
   margin: 3px 1px;
 }
+
+.ng-table-rowselected tr {
+  cursor: pointer;
+}
+
+.hovertr:hover {
+  background-color: #F4F3F3;
+}
+
+.hovertr > td.active:hover,
+.hovertr > th.active:hover,
+.hovertr.active:hover > td,
+.hovertr:hover > .active,
+.hovertr.active:hover > th {
+  background-color: #e8e8e8;
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.noborder {
+  border: 0 !important;
+}
+
+/*Remove border on outside edges of the outside cells*/
+table td, table th {
+  border: 1px solid black;
+}
+table tr:first-child th {
+  border-top: 0;
+}
+table tr:last-child td {
+  border-bottom: 0;
+}
+table tr td:first-child,
+table tr th:first-child {
+  border-left: 0;
+}
+table tr td:last-child,
+table tr th:last-child {
+  border-right: 0;
+}
