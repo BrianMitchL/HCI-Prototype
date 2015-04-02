@@ -28,20 +28,20 @@ td > .btn-xs {
 }
 
 /*Remove border on outside edges of the outside cells*/
-table td, table th {
-  border: 1px solid black;
+.noborder td, .noborder th {
+  border: 1px solid #ddd;
 }
-table tr:first-child th {
+.noborder tr:first-child th {
   border-top: 0;
 }
-table tr:last-child td {
+.noborder tr:last-child td {
   border-bottom: 0;
 }
-table tr td:first-child,
-table tr th:first-child {
+.noborder tr td:first-child,
+.noborder tr th:first-child {
   border-left: 0;
 }
-table tr td:last-child,
-table tr th:last-child {
+.noborder tr td:last-child,
+.noborder tr th:last-child {
   border-right: 0;
 }
