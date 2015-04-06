@@ -30,7 +30,13 @@
               {{card.type}}
             </td>
             <td data-title="'Deck'" filter="{ 'deck': 'text' }" sortable="'deck'">
-              {{card.deck}}
+              <span ng-if="!card.$edit">{{card.deck}}</span>
+              <span ng-if="card.$edit">Add card to deck:</span>
+              <input ng-if="card.$edit" class="form-control" ng-model="card.deck">
+              <button ng-if="!card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = true">Edit</button>
+              <button ng-if="card.$edit" class="btn btn-primary btn-xs" ng-click="card.$edit = false; updateCard(card)">Save</button>
+              <button class="btn btn-warning btn-xs" ng-click="card.$edit = false; removeFromDeck(card)">Remove</button>
+              <button ng-if="card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = false">Cancel</button>
             </td>
             <td data-title="'Color'" width="60">
               <span ng-show="card.color.blue" class="fa-stack">

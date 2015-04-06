@@ -37,6 +37,19 @@ angular.module('hciPrototypeApp')
       });
     };
 
+    $scope.updateCard = function(card) {
+      $http.put('/api/cards/' + card._id, card).success(function(){
+        getCards();
+      });
+    };
+
+    $scope.removeFromDeck = function(card) {
+      card.deck = '';
+      $http.put('/api/cards/' + card._id, card).success(function(){
+        getCards();
+      });
+    };
+
     function getCards() {
       $http.get('/api/cards').success(function(cardList) {
         data = cardList;
