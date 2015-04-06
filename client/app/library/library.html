@@ -1,0 +1,123 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Library</h1>
+    <p class="lead">All of your cards.</p>
+    <button ng-click="reloadCards()" class="btn btn-warning">*DEBUG* Reload from MongoDB</button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Library:</h1>
+      <!--<button ng-click="libraryParams.sorting({name: 'asc'})" class="btn btn-default pull-right">Clear sorting</button>-->
+      <!--<button ng-click="libraryParams.filter({})" class="btn btn-default pull-right">Clear filter</button>-->
+      <!--<p><strong>Sorting:</strong> {{libraryParams.sorting()|json}}</p>-->
+      <!--<p><strong>Filter:</strong> {{libraryParams.filter()|json}}</p>-->
+
+      <table ng-table="libraryParams" show-filter="true" class="table table-bordered ng-table-rowselected">
+        <tbody ng-repeat="card in $data">
+          <tr class="hovertr" ng-click="card.$selected = !card.$selected" ng-class="{'active': card.$selected}">
+            <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'">
+              {{card.name}}
+            </td>
+            <td data-title="'Description'" filter="{ 'description': 'text' }" sortable="'description'">
+              {{card.description}}
+            </td>
+            <td data-title="'Type'" filter="{ 'type': 'text' }" sortable="'type'">
+              {{card.type}}
+            </td>
+            <td data-title="'Deck'" filter="{ 'deck': 'text' }" sortable="'deck'">
+              <span ng-if="!card.$edit">{{card.deck}}</span>
+              <span ng-if="card.$edit">Add card to deck:</span>
+              <input ng-if="card.$edit" class="form-control" ng-model="card.deck">
+              <button ng-if="!card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = true">Edit</button>
+              <button ng-if="card.$edit" class="btn btn-primary btn-xs" ng-click="card.$edit = false; updateCard(card)">Save</button>
+              <button class="btn btn-warning btn-xs" ng-click="card.$edit = false; removeFromDeck(card)">Remove</button>
+              <button ng-if="card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = false">Cancel</button>
+            </td>
+            <td data-title="'Color'" width="60">
+              <span ng-show="card.color.blue" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#A1DCF9"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.color.red" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#F9A084"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.color.black" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#C6BBB9"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.color.green" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#90CDA4"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.color.white" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#FFFCD1"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+            </td>
+            <td data-title="'Color ID'" width="60">
+              <span ng-show="card.colorID.blue" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#A1DCF9"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.colorID.red" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#F9A084"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.colorID.black" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#C6BBB9"></i>
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.colorID.green" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#90CDA4"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+              <span ng-show="card.colorID.white" class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x" style="color:#FFFCD1"></i>
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+              </span>
+            </td>
+            <td data-title="'Actions'" width="60">
+              <button class="btn btn-danger btn-xs" ng-click="deleteCard(card)">Remove</button>
+            </td>
+          </tr>
+          <tr ng-show="card.$selected" ng-class="{'active': card.$selected};" class="nopadding">
+            <td colspan="7" class="nopadding">
+              <table class="table table-bordered noborder nopadding">
+                <thead>
+                  <tr ng-click="card.$selected = !card.$selected" ng-class="{'active': card.$selected}">
+                    <th>Sub Type</th>
+                    <th>Rules</th>
+                    <th>Flavor</th>
+                    <th>Power</th>
+                    <th>Toughness</th>
+                    <th>Rarity</th>
+                    <th>Block Set</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-click="card.$selected = !card.$selected" ng-class="{'active': card.$selected}">
+                    <td>{{card.subType}}</td>
+                    <td>{{card.rules}}</td>
+                    <td>{{card.flavor}}</td>
+                    <td>{{card.power}}</td>
+                    <td>{{card.toughness}}</td>
+                    <td>{{card.rarity}}</td>
+                    <td>{{card.blockSet}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer ng-include="'components/footer/footer.html'"></footer>

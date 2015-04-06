@@ -9,6 +9,9 @@ angular.module('hciPrototypeApp')
       'title': 'Cards',
       'link': '/cards'
     }, {
+      'title': 'Library',
+      'link': '/library'
+    }, {
       'title': 'Decks',
       'link': '/decks'
     }, {

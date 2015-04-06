@@ -7,7 +7,7 @@ angular.module('hciPrototypeApp')
 
     $scope.addCard = function(isValid) {
       if (isValid) {
-        $http.post('/api/cards', $scope.card).success(function () {
+        $http.post('/api/allcards', $scope.card).success(function () {
           $scope.reset();
         });
         $scope.submitted = true;

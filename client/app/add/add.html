@@ -3,7 +3,7 @@
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>Add Cards</h1>
-    <p class="lead">Add new cards to your library.</p>
+    <p class="lead">Add new cards to the database.</p>
   </div>
 </header>
 
@@ -42,14 +42,6 @@
           <div class="error" ng-show="addCardForm.subType.$dirty && addCardForm.subType.$invalid">
             <small class="error" ng-show="addCardForm.subType.$error.required">A sub-type is required.</small>
             <small class="error" ng-show="addCardForm.subType.$error.minlength">The sub-type is required to be at least 1 character</small>
-          </div>
-        </div>
-        <div class="form-group" ng-class="{ 'has-error' : addCardForm.deck.$invalid && !addCardForm.deck.$pristine }">
-          <label for="deck">Deck</label>
-          <input class="form-control" id="deck" type="text" name="deck" ng-model="card.deck" placeholder="Deck" ng-minlength="1" required>
-          <div class="error" ng-show="addCardForm.deck.$dirty && addCardForm.deck.$invalid">
-            <small class="error" ng-show="addCardForm.deck.$error.required">A deck is required.</small>
-            <small class="error" ng-show="addCardForm.deck.$error.minlength">The deck is required to be at least 1 character</small>
           </div>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : addCardForm.color.$error.required && submitted}">

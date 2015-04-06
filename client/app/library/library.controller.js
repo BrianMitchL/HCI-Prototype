@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('hciPrototypeApp')
-  .controller('CardsCtrl', function ($scope, $http, $filter, ngTableParams) {
+  .controller('LibraryCtrl', function ($scope, $http, $filter, ngTableParams) {
     var data = [];
 
-    $http.get('/api/allcards').success(function(cardList) {
+    $http.get('/api/cards').success(function(cardList) {
       data = cardList;
-      $scope.cardParams = new ngTableParams({
+      $scope.libraryParams = new ngTableParams({
         page: 1,            // show first page
         count: 10,          // count per page
         //Can set initial filter, but drastically slows the rendering of the table
@@ -31,24 +31,29 @@ angular.module('hciPrototypeApp')
       console.log(status + ": " + data);
     });
 
-    $scope.addToLibrary = function(card) {
-      $http.post('/api/cards', card).success(function () {
-        console.log(card);
-      }).error(function(data, status) {
-        console.log(status + ": " + data);
+    $scope.deleteCard = function(card) {
+      $http.delete('/api/cards/' + card._id).success(function(){
+        getCards();
       });
     };
 
-    $scope.deleteCard = function(card) {
-      $http.delete('/api/allcards/' + card._id).success(function(){
+    $scope.updateCard = function(card) {
+      $http.put('/api/cards/' + card._id, card).success(function(){
+        getCards();
+      });
+    };
+
+    $scope.removeFromDeck = function(card) {
+      card.deck = '';
+      $http.put('/api/cards/' + card._id, card).success(function(){
         getCards();
       });
     };
 
     function getCards() {
-      $http.get('/api/allcards').success(function(cardList) {
+      $http.get('/api/cards').success(function(cardList) {
         data = cardList;
-        $scope.cardParams.reload();
+        $scope.libraryParams.reload();
       }).error(function(data, status) {
         console.log(status + ": " + data);
       });
