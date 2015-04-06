@@ -53,6 +53,7 @@
           </div>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : addCardForm.color.$error.required && submitted}">
+          <label>Color&nbsp;</label>
           <label class="checkbox-inline">
             <input type="checkbox" name="color" ng-model="card.color.blue" ng-required="!card.color">
             <span class="fa-stack">
@@ -90,6 +91,7 @@
           </label>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : addCardForm.colorID.$error.required && submitted}">
+          <label>Color ID&nbsp;</label>
           <label class="checkbox-inline">
             <input type="checkbox" name="colorID" ng-model="card.colorID.blue" ng-required="!card.colorID">
             <span class="fa-stack">
