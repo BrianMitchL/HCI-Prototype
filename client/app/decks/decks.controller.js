@@ -2,10 +2,12 @@
 
 angular.module('hciPrototypeApp')
   .controller('DecksCtrl', function ($scope, $http, $filter, ngTableParams) {
+    var allCards = [];
     var data = [];
 
-    $http.get('/api/decks').success(function(deckList) {
-      data = deckList;
+    $http.get('/api/cards').success(function(cardList) {
+      data = cardList;
+      allCards = cardList;
       $scope.deckParams = new ngTableParams({
         page: 1,            // show first page
         count: 10,          // count per page
@@ -31,22 +33,29 @@ angular.module('hciPrototypeApp')
       console.log(status + ": " + data);
     });
 
-    $scope.deleteDeck = function(deck) {
-      $http.delete('/api/decks/' + deck._id).success(function(){
-        getDecks();
+    $scope.removeFromDeck = function(card) {
+      card.deck = '';
+      $http.put('/api/cards/' + card._id, card).success(function(){
+        getCards();
       });
     };
 
-    function getDecks() {
-      $http.get('/api/decks').success(function(deckList) {
-        data = deckList;
+    $scope.filterDecks = function() {
+      data = $filter('filter')(allCards, $scope.deckName);
+      $scope.deckParams.reload();
+    };
+
+    function getCards() {
+      $http.get('/api/cards').success(function(cardList) {
+        allCards = cardList;
+        data = cardList;
         $scope.deckParams.reload();
       }).error(function(data, status) {
         console.log(status + ": " + data);
       });
     }
 
-    $scope.reloadDecks = function() {
-      getDecks();
+    $scope.reloadCards = function() {
+      getCards();
     };
   });

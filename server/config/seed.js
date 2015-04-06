@@ -7,33 +7,10 @@
 
 var Thing = require('../api/thing/thing.model');
 var Card = require('../api/card/card.model');
-var Deck = require('../api/deck/deck.model');
 
 
 Thing.find({}).remove(function() {
   Thing.create({
-    name : 'Development Tools',
-    info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
-  }, {
-    name : 'Server and Client integration',
-    info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node.'
-  }, {
-    name : 'Smart Build System',
-    info : 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
-  },  {
-    name : 'Modular Structure',
-    info : 'Best practice client and server structures allow for more code reusability and maximum scalability'
-  },  {
-    name : 'Optimized Build',
-    info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-  },{
-    name : 'Deployment Ready',
-    info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
-  });
-});
-
-Deck.find({}).remove(function() {
-  Deck.create({
     name : 'Development Tools',
     info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
   }, {
@@ -85,6 +62,7 @@ Deck.find({}).remove(function() {
 //    name : 'Crucial',
 //    description : 'Throws SSDs at opponents.',
 //    type : 'projectile',
+//    deck : 'Fun Times',
 //    color: {
 //      black : true,
 //      white : true
@@ -97,6 +75,7 @@ Deck.find({}).remove(function() {
 //    name : 'Speaker Dude',
 //    description : 'Drops the bass so hard he puts opponents into an uncontrollable dropped bass state.',
 //    type : 'sound',
+//    deck : 'Fun Times',
 //    color: {
 //      blue: true
 //    },
@@ -107,6 +86,7 @@ Deck.find({}).remove(function() {
 //    name : 'Swirly',
 //    description : 'Holds the opponent\'s head in a toilet while flushing it.',
 //    type : 'water',
+//    deck : 'Fun Times',
 //    color: {
 //      red : true
 //    },
@@ -117,6 +97,7 @@ Deck.find({}).remove(function() {
 //    name : 'Lighting',
 //    description : 'Struck by lightning, -5 HP.',
 //    type : 'electricity',
+//    deck : 'Bad Times',
 //    color: {
 //      black : true
 //    },
@@ -128,6 +109,7 @@ Deck.find({}).remove(function() {
 //    name : 'Flood',
 //    description : 'Major flood, -3 HP.',
 //    type : 'water',
+//    deck : 'Bad Times',
 //    color: {
 //      green : true
 //    },
@@ -161,6 +143,7 @@ Deck.find({}).remove(function() {
 //  }, {name : 'Textbook',
 //    description : 'You read an entire textbook, wow. +6 HP',
 //    type : 'knowledge',
+//    deck : 'Bad Times',
 //    color: {
 //      green : true,
 //      white : true
@@ -173,6 +156,7 @@ Deck.find({}).remove(function() {
 //    name : 'Bling Bling',
 //    description : 'You found $20 on the ground!',
 //    type : 'money',
+//    deck : 'Bad Times',
 //    color: {
 //      red : true,
 //      black : true
@@ -185,6 +169,7 @@ Deck.find({}).remove(function() {
 //    name : 'Dumbell',
 //    description : 'You\'re either stronger or your enemies have bruises.',
 //    type : 'strength',
+//    deck : 'Bad Times',
 //    color: {
 //      red : true,
 //      white : true
@@ -197,6 +182,7 @@ Deck.find({}).remove(function() {
 //    name : 'Dessert',
 //    description : 'Your mother makes you a delicious cherry pie, yum. +50 happiness.',
 //    type : 'food',
+//    deck : 'Bad Times',
 //    color: {
 //      blue: true,
 //      green : true
@@ -209,6 +195,7 @@ Deck.find({}).remove(function() {
 //    name : 'JavaScript',
 //    description : 'You lose track of your types, the world is too dynamic. -4 HP',
 //    type : 'knowledge',
+//    deck : 'Bad Times',
 //    color: {
 //      red : true,
 //      green : true

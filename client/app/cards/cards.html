@@ -12,10 +12,10 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Library:</h1>
-      <button ng-click="libraryParams.sorting({name: 'asc'})" class="btn btn-default pull-right">Clear sorting</button>
-      <button ng-click="libraryParams.filter({})" class="btn btn-default pull-right">Clear filter</button>
-      <p><strong>Sorting:</strong> {{libraryParams.sorting()|json}}</p>
-      <p><strong>Filter:</strong> {{libraryParams.filter()|json}}</p>
+      <!--<button ng-click="libraryParams.sorting({name: 'asc'})" class="btn btn-default pull-right">Clear sorting</button>-->
+      <!--<button ng-click="libraryParams.filter({})" class="btn btn-default pull-right">Clear filter</button>-->
+      <!--<p><strong>Sorting:</strong> {{libraryParams.sorting()|json}}</p>-->
+      <!--<p><strong>Filter:</strong> {{libraryParams.filter()|json}}</p>-->
 
       <table ng-table="libraryParams" show-filter="true" class="table table-bordered ng-table-rowselected">
         <tbody ng-repeat="card in $data">
