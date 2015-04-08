@@ -34,12 +34,16 @@ angular.module('hciPrototypeApp')
     $scope.deleteCard = function(card) {
       $http.delete('/api/cards/' + card._id).success(function(){
         getCards();
+      }).error(function(data, status) {
+        console.log(status + ": " + data);
       });
     };
 
     $scope.updateCard = function(card) {
       $http.put('/api/cards/' + card._id, card).success(function(){
         getCards();
+      }).error(function(data, status) {
+        console.log(status + ": " + data);
       });
     };
 
@@ -47,6 +51,8 @@ angular.module('hciPrototypeApp')
       card.deck = '';
       $http.put('/api/cards/' + card._id, card).success(function(){
         getCards();
+      }).error(function(data, status) {
+        console.log(status + ": " + data);
       });
     };
 

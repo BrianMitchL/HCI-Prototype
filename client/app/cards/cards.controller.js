@@ -32,16 +32,23 @@ angular.module('hciPrototypeApp')
     });
 
     $scope.addToLibrary = function(card) {
+      var id = card._id;
+      delete card._id;
       $http.post('/api/cards', card).success(function () {
-        console.log(card);
+        console.log('Added to library: ' + card);
+        card._id = id;
       }).error(function(data, status) {
-        console.log(status + ": " + data);
+        console.log('Failed to add to library: ' + status + ": " + data);
+        console.log(card);
       });
     };
 
     $scope.deleteCard = function(card) {
       $http.delete('/api/allcards/' + card._id).success(function(){
+        console.log('Deleted from cards: ' + card);
         getCards();
+      }).error(function(data, status) {
+        console.log(status + ": " + data);
       });
     };
 
