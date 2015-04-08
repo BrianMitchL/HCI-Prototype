@@ -23,8 +23,8 @@
             <td data-title="'Name'" filter="{ 'name': 'text' }" sortable="'name'">
               {{card.name}}
             </td>
-            <td data-title="'Description'" filter="{ 'description': 'text' }" sortable="'description'">
-              {{card.description}}
+            <td data-title="'Rules'" filter="{ 'rules': 'text' }" sortable="'rules'">
+              {{card.rules}}
             </td>
             <td data-title="'Type'" filter="{ 'type': 'text' }" sortable="'type'">
               {{card.type}}
@@ -92,8 +92,8 @@
                 <thead>
                   <tr ng-click="card.$selected = !card.$selected" ng-class="{'active': card.$selected}">
                     <th>Sub Type</th>
-                    <th>Rules</th>
-                    <th>Flavor</th>
+                    <th>Description</th>
+                    <th>Flavor Text</th>
                     <th>Power</th>
                     <th>Toughness</th>
                     <th>Rarity</th>
@@ -103,8 +103,8 @@
                 <tbody>
                   <tr ng-click="card.$selected = !card.$selected" ng-class="{'active': card.$selected}">
                     <td>{{card.subType}}</td>
-                    <td>{{card.rules}}</td>
-                    <td>{{card.flavor}}</td>
+                    <td>{{card.description}}</td>
+                    <td><i>{{card.flavor}}</i></td>
                     <td>{{card.power}}</td>
                     <td>{{card.toughness}}</td>
                     <td>{{card.rarity}}</td>
