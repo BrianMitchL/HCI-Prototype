@@ -33,10 +33,10 @@
               <span ng-if="!card.$edit">{{card.deck}}</span>
               <span ng-if="card.$edit">Add card to deck:</span>
               <input ng-if="card.$edit" class="form-control" ng-model="card.deck">
-              <button ng-if="!card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = true">Edit</button>
-              <button ng-if="card.$edit" class="btn btn-primary btn-xs" ng-click="card.$edit = false; updateCard(card)">Save</button>
-              <button class="btn btn-warning btn-xs" ng-click="card.$edit = false; removeFromDeck(card)">Remove</button>
-              <button ng-if="card.$edit" class="btn btn-default btn-xs" ng-click="card.$edit = false">Cancel</button>
+              <button ng-if="!card.$edit" class="btn btn-default btn-xs" ng-click="$event.stopPropagation(); card.$edit = true">Edit</button>
+              <button ng-if="card.$edit" class="btn btn-primary btn-xs" ng-click="$event.stopPropagation(); card.$edit = false; updateCard(card)">Save</button>
+              <button class="btn btn-warning btn-xs" ng-click="$event.stopPropagation(); card.$edit = false; removeFromDeck(card)">Remove</button>
+              <button ng-if="card.$edit" class="btn btn-default btn-xs" ng-click="$event.stopPropagation(); card.$edit = false">Cancel</button>
             </td>
             <td data-title="'Color'" width="60">
               <span ng-show="card.color.blue" class="fa-stack">
@@ -83,7 +83,7 @@
               </span>
             </td>
             <td data-title="'Actions'" width="60">
-              <button class="btn btn-danger btn-xs" ng-click="deleteCard(card)">Remove</button>
+              <button class="btn btn-danger btn-xs" ng-click="deleteCard(card);$event.stopPropagation()">Remove</button>
             </td>
           </tr>
           <tr ng-show="card.$selected" ng-class="{'active': card.$selected};" class="nopadding">

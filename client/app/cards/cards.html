@@ -74,8 +74,8 @@
               </span>
           </td>
           <td data-title="'Actions'" width="60">
-            <button class="btn btn-primary btn-xs" ng-click="addToLibrary(card)">Add to Library</button>
-            <button class="btn btn-danger btn-xs" ng-click="deleteCard(card)">Delete</button>
+            <button class="btn btn-primary btn-xs" ng-click="$event.stopPropagation(); addToLibrary(card)">Add to Library</button>
+            <button class="btn btn-danger btn-xs" ng-click="$event.stopPropagation(); deleteCard(card)">Delete</button>
           </td>
         </tr>
         <tr ng-show="card.$selected" ng-class="{'active': card.$selected};" class="nopadding">

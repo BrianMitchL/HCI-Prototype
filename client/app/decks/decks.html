@@ -87,7 +87,7 @@
               </span>
           </td>
           <td data-title="'Actions'" width="60">
-            <button class="btn btn-danger btn-xs" ng-click="removeFromDeck(card)">Remove From Deck</button>
+            <button class="btn btn-danger btn-xs" ng-click="$event.stopPropagation(); removeFromDeck(card)">Remove From Deck</button>
           </td>
         </tr>
         <tr ng-show="card.$selected" ng-class="{'active': card.$selected};" class="nopadding">
