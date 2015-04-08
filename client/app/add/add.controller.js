@@ -9,14 +9,15 @@ angular.module('hciPrototypeApp')
       if (isValid) {
         $http.post('/api/allcards', $scope.card).success(function () {
           $scope.reset();
+          $scope.submitted = true;
+        }).error(function(data, status) {
+          console.log(status + ": " + data);
         });
-        $scope.submitted = true;
-      } else {
-        alert("Form did not validate");
       }
     };
 
     $scope.reset = function() {
       $scope.card = {};
+      $scope.addCardForm.$setPristine();
     };
   });
