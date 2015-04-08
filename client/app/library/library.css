@@ -2,7 +2,7 @@ td > .btn-xs {
   margin: 3px 1px;
 }
 
-.ng-table-rowselected tr {
+.ng-table-rowselected tr td {
   cursor: pointer;
 }
 
