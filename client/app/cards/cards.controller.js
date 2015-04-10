@@ -28,7 +28,7 @@ angular.module('hciPrototypeApp')
         }
       });
     }).error(function(data, status) {
-      console.log(status + ": " + data);
+      console.log(status + ': ' + data);
     });
 
     $scope.addToLibrary = function(card) {
@@ -38,7 +38,7 @@ angular.module('hciPrototypeApp')
         console.log('Added to library: ' + card);
         card._id = id;
       }).error(function(data, status) {
-        console.log('Failed to add to library: ' + status + ": " + data);
+        console.log('Failed to add to library: ' + status + ': ' + data);
         console.log(card);
       });
     };
@@ -48,7 +48,7 @@ angular.module('hciPrototypeApp')
         console.log('Deleted from cards: ' + card);
         getCards();
       }).error(function(data, status) {
-        console.log(status + ": " + data);
+        console.log(status + ': ' + data);
       });
     };
 
@@ -57,7 +57,7 @@ angular.module('hciPrototypeApp')
         data = cardList;
         $scope.cardParams.reload();
       }).error(function(data, status) {
-        console.log(status + ": " + data);
+        console.log(status + ': ' + data);
       });
     }
 

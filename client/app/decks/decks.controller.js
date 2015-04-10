@@ -30,7 +30,7 @@ angular.module('hciPrototypeApp')
         }
       });
     }).error(function(data, status) {
-      console.log(status + ": " + data);
+      console.log(status + ': ' + data);
     });
 
     $scope.removeFromDeck = function(card) {
@@ -51,7 +51,7 @@ angular.module('hciPrototypeApp')
         data = cardList;
         $scope.deckParams.reload();
       }).error(function(data, status) {
-        console.log(status + ": " + data);
+        console.log(status + ': ' + data);
       });
     }
 

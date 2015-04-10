@@ -11,7 +11,7 @@ angular.module('hciPrototypeApp')
           $scope.reset();
           $scope.submitted = true;
         }).error(function(data, status) {
-          console.log(status + ": " + data);
+          console.log(status + ': ' + data);
         });
       }
     };

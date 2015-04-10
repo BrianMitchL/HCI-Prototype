@@ -28,14 +28,14 @@ angular.module('hciPrototypeApp')
         }
       });
     }).error(function(data, status) {
-      console.log(status + ": " + data);
+      console.log(status + ': ' + data);
     });
 
     $scope.deleteCard = function(card) {
       $http.delete('/api/cards/' + card._id).success(function(){
         getCards();
       }).error(function(data, status) {
-        console.log(status + ": " + data);
+        console.log(status + ': ' + data);
       });
     };
 
@@ -43,7 +43,7 @@ angular.module('hciPrototypeApp')
       $http.put('/api/cards/' + card._id, card).success(function(){
         getCards();
       }).error(function(data, status) {
-        console.log(status + ": " + data);
+        console.log(status + ': ' + data);
       });
     };
 
@@ -52,7 +52,7 @@ angular.module('hciPrototypeApp')
       $http.put('/api/cards/' + card._id, card).success(function(){
         getCards();
       }).error(function(data, status) {
-        console.log(status + ": " + data);
+        console.log(status + ': ' + data);
       });
     };
 
@@ -61,7 +61,7 @@ angular.module('hciPrototypeApp')
         data = cardList;
         $scope.libraryParams.reload();
       }).error(function(data, status) {
-        console.log(status + ": " + data);
+        console.log(status + ': ' + data);
       });
     }
 
