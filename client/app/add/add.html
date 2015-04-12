@@ -160,7 +160,7 @@
             <small class="error" ng-show="addCardForm.rarity.$error.minlength">The rarity is required to be at least 1 character</small>
           </div>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : addCardForm.name.$invalid && !addCardForm.name.$pristine }">
+        <div class="form-group" ng-class="{ 'has-error' : addCardForm.blockSet.$invalid && !addCardForm.blockSet.$pristine }">
           <label for="blockSet">Block Set</label>
           <input class="form-control" id="blockSet" type="text" name="blockSet" ng-model="card.blockSet" placeholder="Block Set" ng-minlength="1" required>
           <div class="error" ng-show="addCardForm.blockSet.$dirty && addCardForm.blockSet.$invalid">
